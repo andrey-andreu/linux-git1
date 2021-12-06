@@ -14,4 +14,5 @@ jobs:
         pip install pylint
     - name: pylint for python programs
       run: |
-        find . -name '*.py' -exec pylint {} \;
+        find . -name '*.py' -exec pylint {} \ | sed -n '/^Your code has been rated at/p' | head -1
+        
