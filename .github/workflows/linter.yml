@@ -16,23 +16,23 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: Pylint for python programs
+    - name: Results of pylint
       run: |
         find . -name '*.py' -exec pylint {} \;
     - name: Evaluation
       run: |
         N=$(find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
-        echo $N
-        N=$(expr $N / 100)
-        echo $N
+        N=$(expr $N / 10000000000)
+        N1=$(expr $N / 100)
+        N2=$(expr $N % 100)
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git config user.name "${{ github.actor }}"
         git pull
         cd project2
         echo "Проверка кода написанного на языке python с помощью линкера pylint  
         Проверку проходят программы, балл в pylint которых больше 7.00  
-        Результаты проверки на последнего пуша :[![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)  
-        Score: $N" > README.md
+        Результаты проверки на последнего пуша   [![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)  
+        Score: $N1.$N2" > README.md
         git commit -m "added the results" README.md
         git push
         if [ $N < 7000 ]; then
