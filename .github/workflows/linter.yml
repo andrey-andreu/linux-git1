@@ -35,7 +35,8 @@ jobs:
         Score: $N1.$N2" > README.md
         git commit -m "added the results" README.md
         git push
-        if [ $N1 < 6 ]; then
+        border=6
+        if [ "$N1" -lt "$border" ]; then
           exit 1
         fi
         
