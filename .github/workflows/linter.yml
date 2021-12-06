@@ -2,7 +2,7 @@ name: linter for python
 on:
   push:
     paths:
-      - '*.py'
+    - '*.py'
 jobs:
   build:
     runs-on: ubuntu-latest
