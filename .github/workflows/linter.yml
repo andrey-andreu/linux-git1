@@ -18,9 +18,9 @@ jobs:
         pip install pylint
     - name: Results of pylint
       run: |
-        n=$(find ./project2 -name '*.py')
+        n=$(find ./project2 -mtime '*.py')
         echo $n
-        name_file=$(find ./project2 -name '*.py' | tail -1)
+        name_file=$(find ./project2 -mtime '*.py' | tail -1)
         echo $name_file
          -exec pylint {} \;
     - name: Evaluation
