@@ -1,1 +1,1 @@
-[greetings.py](greetings.py)
+Проверка кода написанного на языке python с помощью линкера pylint\n  Проверку проходят программы, балл в pylint которых больше 7.00\n  Результаты проверки на последнего пуша :[![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)\n  Score: 1000101000100
