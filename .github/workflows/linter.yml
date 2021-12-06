@@ -14,5 +14,13 @@ jobs:
         pip install pylint
     - name: pylint for python programs
       run: |
-        find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9'
+        find . -name '*.py' -exec pylint {} \;
+    - name: Evaluation
+    - run: |
+        N=$(find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
+        N=$(expr $N / 100)
+        if [ $N < 7000 ]; then
+          exit 1
+        fi
+        
         
