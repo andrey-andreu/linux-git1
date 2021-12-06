@@ -1,8 +1,5 @@
 name: linter for python
-on:
-  push:
-    paths:
-    - '*.py'
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +12,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: pylint for python programs
+    - name: Pylint for python programs
       run: |
         find . -name '*.py' -exec pylint {} \;
     - name: Evaluation
@@ -23,7 +20,7 @@ jobs:
         N=$(find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
         N=$(expr $N / 100)
         git pull
-        echo "Проверка кода написанного на языке python с помощью линкера pylint\n  Проверку проходят программы, балл в pylint которых больше 7.00\n  Результаты проверки на последнего пуша :\n  [![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)\n  Score: $N" >> README.md
+        echo "Проверка кода написанного на языке python с помощью линкера pylint\n  Проверку проходят программы, балл в pylint которых больше 7.00\n  Результаты проверки на последнего пуша :[![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)\n  Score: $N" >> README.md
         git commit -m "added the results" README.md
         git push
         if [ $N < 7000 ]; then
