@@ -18,7 +18,9 @@ jobs:
         pip install pylint
     - name: Results of pylint
       run: |
-        find . -name '*.py' | head -1 | -exec pylint {} \;
+        name_file=$(find . -name '*.py' | head -1)
+        echo name_file
+         -exec pylint {} \;
     - name: Evaluation
       run: |
         N=$(find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
