@@ -20,7 +20,7 @@ jobs:
       run: |
         n=$(find ./project2 -name '*.py')
         echo $n
-        name_file=$(find ./project2 -name '*.py' | head -1)
+        name_file=$(find ./project2 -name '*.py' | tail -1)
         echo $name_file
          -exec pylint {} \;
     - name: Evaluation
