@@ -19,9 +19,9 @@ jobs:
     - name: Results of pylint
       run: |
         n=$(find ./project2 -name '*.py')
-        echo n
+        echo $n
         name_file=$(find ./project2 -name '*.py' | head -1)
-        echo name_file
+        echo $name_file
          -exec pylint {} \;
     - name: Evaluation
       run: |
