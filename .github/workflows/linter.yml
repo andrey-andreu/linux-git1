@@ -18,14 +18,11 @@ jobs:
         pip install pylint
     - name: Results of pylint
       run: |
-        n=$(find ./project2 -mtime '*.py')
-        echo $n
-        name_file=$(find ./project2 -mtime '*.py' | tail -1)
-        echo $name_file
-         -exec pylint {} \;
+        find ./project2 -name '*.py' -exec pylint {} \;
     - name: Evaluation
       run: |
-        N=$(find . -name '*.py' -exec pylint {} \; | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
+        file=$(ls -t | grep py | head -1)
+        N=$(pylint $file | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
         N=$(expr $N / 10000000000)
         N1=$(expr $N / 100)
         N2=$(expr $N % 100)
