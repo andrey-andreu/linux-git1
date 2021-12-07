@@ -38,7 +38,7 @@ jobs:
           
         Результаты проверки последнего файла с расширением .py   
         [![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)  
-        Оценка pylint: $N1.$N2" > README.md
+        Оценка pylint для $file: $N1.$N2" > README.md
         git commit -m "added the results" README.md
         git push
         border=6
