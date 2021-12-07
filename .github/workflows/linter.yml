@@ -26,7 +26,7 @@ jobs:
         cd project2
         file_n=$(ls -t | grep py | head -1)
         echo $file_n
-        N=$(pylint $file_n | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
+        N=$(pylint $file_n | sed -n '/^Your code has been rated at/p' | tail -1 | tr -cd '0-9')
         N=$(expr $N / 10000000000)
         N1=$(expr $N / 100)
         N2=$(expr $N % 100)
