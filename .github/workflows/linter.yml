@@ -25,9 +25,8 @@ jobs:
         git config user.name "${{ github.actor }}"
         cd project2
         file_n=$(ls -t | grep py | head -1)
-        echo $file
+        echo $file_n
         N=$(pylint $file_n | sed -n '/^Your code has been rated at/p' | head -1 | tr -cd '0-9')
-        echo $N
         N=$(expr $N / 10000000000)
         N1=$(expr $N / 100)
         N2=$(expr $N % 100)
@@ -38,7 +37,7 @@ jobs:
           
         Результаты проверки последнего файла с расширением .py   
         [![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)  
-        Оценка pylint для $file: $N1.$N2" > README.md
+        Оценка pylint для $file_n: $N1.$N2" > README.md
         git commit -m "added the results" README.md
         git push
         border=6
