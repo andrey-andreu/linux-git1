@@ -4,4 +4,4 @@
   
 Результаты проверки последнего файла с расширением .py   
 [![link](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml/badge.svg)](https://github.com/andrey-andreu/linux-git1/actions/workflows/linter.yml)  
-Оценка pylint для test_prog2.py: 4.47
+Оценка pylint для test_prog3.py: 100.1
